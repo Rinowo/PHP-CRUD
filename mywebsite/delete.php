@@ -1,12 +1,15 @@
 <?php
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'T2110M company');
+//$dataHost='localhost';
+//$dataName='student';
+//$dataUserName='root';
+//$dataPassword='';
+//
+//$mysql = mysqli_connect($dataHost,$dataUserName,$dataPassword,$dataName);
 
-$link = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME);
+include_once ("config.php");
 
 $id = $_GET['id'];
 
-$result = mysqli_query($link, "DELETE FROM student WHERE id = '$id'");
-header("Location: crud.php");
+$result = mysqli_query($mysql,"DELETE FROM student where id='$id'");
+header("Location:index.php");
+?>

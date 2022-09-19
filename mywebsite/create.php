@@ -1,36 +1,32 @@
 <?php
-    if (isset($_POST['Submit'])) {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $mobile = $_POST['mobile'];
+if (isset($_POST['Submit'])){
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
 
-        define('DB_SERVER', 'localhost');
-        define('DB_USERNAME', 'root');
-        define('DB_PASSWORD', '');
-        define('DB_NAME', 'T2110M company');
+//    $dataHost='localhost';
+//    $dataName='student';
+//    $dataUserName='root';
+//    $dataPassword='';
+//
+//    $mysql = mysqli_connect($dataHost,$dataUserName,$dataPassword,$dataName);
 
-        $link = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME);
+    include_once ("config.php");
 
-        $result = mysqli_query($link, "INSERT INTO student (name, email, mobile) 
-        VALUES ('$name', '$email', '$mobile')");
+    $result = mysqli_query($mysql,"INSERT INTO Student(name,email,mobile)
+    values ('$name','$email','$mobile')");
 
-        echo "User added succesfully";
-    }
-    ?>
-
-<!doctype html>
-<html lang="en">
+    echo "User added successfully";
+}
+?>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add Student</title>
 </head>
 <body>
-<a href="crud.php">Home</a>
-<form action="create.php" method="post" name="update_student">
-    <table border="1px solid grey">
+<a href="index.php">Go to home</a>
+<form action="create.php" method="post" name="form">
+    <table width="25%" border="0">
         <tr>
             <td>Name</td>
             <td><input type="text" name="name"></td>
